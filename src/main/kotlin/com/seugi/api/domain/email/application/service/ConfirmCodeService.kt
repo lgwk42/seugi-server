@@ -12,9 +12,7 @@ class ConfirmCodeService (
 ) : ConfirmCodeUseCase {
 
     override fun confirmCode(email: String, code: String) {
-        val got = loadCodePort.loadCode(email)
-
-        if (got != code) {
+        if (loadCodePort.loadCode(email) != code) {
             throw CustomException(EmailErrorCode.CODE_NOT_MATCH)
         }
     }
